@@ -13,7 +13,7 @@ import { Page404Component } from './components/page404/page404.component';
 const routes: Routes = [
 	{ path: '', component: HomeComponent },
 	{ path: 'offers', component: OffersComponent }, //TODO: only users auth.
-	{ path: 'book:/id', component: DetailsBookComponent },
+	{ path: 'book/:id', component: DetailsBookComponent },
 	{ path: 'admin/list-books', component: ListBooksComponent }, //TODO: only users auth.
 	{ path: 'user/login', component: LoginComponent },
 	{ path: 'user/register', component: RegisterComponent },
