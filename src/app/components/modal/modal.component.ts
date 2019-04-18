@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
 import { BookInterface } from '../../models/book';
 import { NgForm } from '@angular/forms';
@@ -11,13 +11,19 @@ import { NgForm } from '@angular/forms';
 export class ModalComponent implements OnInit {
 
   constructor(private dataApi: DataApiService) { }
-
+  @ViewChild('btnClose') btnClose: ElementRef;
   ngOnInit() {
   }
 
   onSaveBook(bookForm: NgForm): void{
-  	// new
-  	this.dataApi.addBook(bookForm.value);
-  	// update
+    if(bookForm.value.id == null){
+      // New
+      this.dataApi.addBook(bookForm.value);
+    }else{
+      // Update
+      this.dataApi.updateBook(bookForm.value);
+    }
+    bookForm.resetForm();
+    this.btnClose.nativeElement.click();
   }
 }
