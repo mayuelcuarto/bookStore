@@ -21,12 +21,12 @@
 					<td>{{book.autor}}</td>
 					<td>{{book.idioma}}</td>
 					<td>{{book.precio}}</td>
-					<td>{{book.oferta}}</td>
+					<td>{{book.oferta == 1 ? 'Sí' : 'No' }}</td>
 					<td>
-						<button class="btn btn-primary">Update</button>
+						<button class="btn btn-primary" data-toggle="modal" data-target="#modalBook" (click)="onPreUpdateBook(book)">Update</button>
 					</td>
 					<td>
-						<button class="btn btn-danger">Delete</button>
+						<button class="btn btn-danger" (click)="onDeleteBook(book.id)">Delete</button>
 					</td>
 				</tr>
 			</tbody>
