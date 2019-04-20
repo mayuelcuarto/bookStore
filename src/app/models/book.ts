@@ -4,7 +4,7 @@ export interface BookInterface{
 	descripcion?: string;
 	portada?: string;
 	precio?: string;
-	link?: string;
+	link_amazon?: string;
 	autor?: string;
 	oferta?: string;
 	id?: string;
