@@ -6,10 +6,7 @@
           <div class="card">
             <div class="card-body text-center">
               <form #formLogin="ngForm" (ngSubmit)="onLogin()">
-                <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError">Login</h1>
-                <div class="alert alert-danger" role="alert" *ngIf="isError">
-                  Something is wrong!
-                </div>
+                <h1 class="h3 mb-3 font-weight-normal">Login</h1>
                 <div class="form-group">
                   <input type="email" id="email" name="email" [(ngModel)]="email" class="form-control" placeholder="Email"  required>
                 </div>

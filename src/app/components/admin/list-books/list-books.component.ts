@@ -15,7 +15,7 @@ import { UserInterface } from '../../../models/user';
 export class ListBooksComponent implements OnInit {
 
   constructor(private dataApi: DataApiService, private authService: AuthService) { }
-  private books = [];
+  public books = [];
   public isAdmin: any = null;
   public userUid: string = null;
 
