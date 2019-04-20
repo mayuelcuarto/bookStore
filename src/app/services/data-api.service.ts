@@ -9,10 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class DataApiService {
 
-  constructor(private afs: AngularFirestore) { 
-  	this.booksCollection = afs.collection<BookInterface>('books');
-  	this.books = this.booksCollection.valueChanges();
-  }
+  constructor(private afs: AngularFirestore) {}
   private booksCollection: AngularFirestoreCollection<BookInterface>;
   private books: Observable<BookInterface[]>;
   private bookDoc: AngularFirestoreDocument<BookInterface>;
@@ -22,6 +19,7 @@ export class DataApiService {
   };
 
   getAllBooks(){
+    this.booksCollection = this.afs.collection<BookInterface>('books');
   	return this.books = this.booksCollection.snapshotChanges()
   	.pipe(map(changes => {
   		return changes.map(action => {
@@ -30,6 +28,18 @@ export class DataApiService {
   			return data;
   		});
   	}));
+  }
+
+  getAllBooksOffers() {
+    this.booksCollection = this.afs.collection('books', ref => ref.where('oferta', '==', '1'));
+    return this.books = this.booksCollection.snapshotChanges()
+      .pipe(map(changes => {
+        return changes.map(action => {
+          const data = action.payload.doc.data() as BookInterface;
+          data.id = action.payload.doc.id;
+          return data;
+        });
+      }));
   }
 
   getOneBook(idBook: string){

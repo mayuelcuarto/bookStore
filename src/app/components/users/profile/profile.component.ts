@@ -10,10 +10,14 @@ import { UserInterface } from '../../../models/user';
 export class ProfileComponent implements OnInit {
   constructor(private authService: AuthService) { }
   user: UserInterface = {
-		name: '',
-		email: '',
-		photoUrl: ''
-	};
+    name: '',
+    email: '',
+    photoUrl: '',
+    roles: {
+      
+    }
+  };
+  
 	public providerId: string = 'null';
 
   ngOnInit() {
