@@ -9,7 +9,14 @@ import { UserInterface } from '../../../models/user';
 })
 export class ProfileComponent implements OnInit {
   constructor(private authService: AuthService) { }
-  user: UserInterface;
+  user: UserInterface = {
+    name: '',
+    email: '',
+    photoUrl: '',
+    roles: {
+      
+    }
+  };
   
 	public providerId: string = 'null';
 
