@@ -10,14 +10,16 @@ import { RegisterComponent } from './components/users/register/register.componen
 import { ProfileComponent } from './components/users/profile/profile.component';
 import { Page404Component } from './components/page404/page404.component';
 
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
 	{ path: '', component: HomeComponent },
-	{ path: 'offers', component: OffersComponent }, //TODO: only users auth.
+	{ path: 'offers', component: OffersComponent, canActivate: [AuthGuard] }, //TODO: only users auth.
 	{ path: 'book/:id', component: DetailsBookComponent },
-	{ path: 'admin/list-books', component: ListBooksComponent }, //TODO: only users auth.
+	{ path: 'admin/list-books', component: ListBooksComponent, canActivate: [AuthGuard] }, //TODO: only users auth.
 	{ path: 'user/login', component: LoginComponent },
 	{ path: 'user/register', component: RegisterComponent },
-	{ path: 'user/profile', component: ProfileComponent }, //TODO: only users auth.
+	{ path: 'user/profile', component: ProfileComponent, canActivate: [AuthGuard] }, //TODO: only users auth.
 	{ path: '**', component: Page404Component },
 ];
 
